@@ -8,8 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="refined"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME=cdimascio-lambda
+# ZSH_THEME="refined"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,6 +109,9 @@ alias ra="ranger"
 alias q="exit"
 alias vp="cd ~/.config/nvim/lua/user/plugins/"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias rc="vim ~/.config/awesome/rc.lua"
+alias theme="vim ~/.config/awesome/default/theme.lua"
+alias clock="tty-clock -c -C 4 -b"
 
 export PATH=$PATH:/home/salatiel/.spicetify
 export EDITOR='nvim'
