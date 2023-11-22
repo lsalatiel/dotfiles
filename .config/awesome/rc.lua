@@ -378,13 +378,13 @@ globalkeys = mytable.join(
     -- ALSA volume control
     awful.key({ altkey }, "Up",
         function ()
-            os.execute(string.format("pamixer -i 5", beautiful.volume.channel))
+            os.execute(string.format("pamixer -i 1", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
     awful.key({ altkey }, "Down",
         function ()
-            os.execute(string.format("pamixer -d 5", beautiful.volume.channel))
+            os.execute(string.format("pamixer -d 1", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
@@ -451,6 +451,10 @@ globalkeys = mytable.join(
     awful.key({ modkey, }, "d", function () awful.util.spawn("rofi -show window") end),
 
     awful.key({ modkey, }, "u", function () awful.util.spawn("flameshot gui") end),
+
+    awful.key({ modkey, }, "p", function () awful.util.spawn("flameshot screen") end),
+
+    awful.key({ altkey, }, "p", function () awful.util.spawn("flameshot full") end),
 
     awful.key({ modkey }, "v", function() xrandr.xrandr() end),
 
