@@ -112,6 +112,15 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias rc="vim ~/.config/awesome/rc.lua"
 alias theme="vim ~/.config/awesome/default/theme.lua"
 alias clock="tty-clock -c -C 4 -b"
+alias xp="xrandr --output HDMI-1 --primary"
+
+# git aliases
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gr="git rm"
 
 export PATH=$PATH:/home/salatiel/.spicetify
 export EDITOR='nvim'
