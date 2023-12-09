@@ -263,8 +263,8 @@ globalkeys = mytable.join(
               {description = "destroy all notifications", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
-              {description = "lock screen", group = "hotkeys"}),
+    -- awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    --           {description = "lock screen", group = "hotkeys"}),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -408,30 +408,43 @@ globalkeys = mytable.join(
     --     {description = "volume 0%", group = "hotkeys"}),
 
     -- MPD control
+    awful.key({ altkey, "Control" }, "p",
+        function ()
+            os.execute("spotifyc -c")
+            -- beautiful.mpd.update()
+        end,
+        {description = "play-pause spotify", group = "widgets"}),
+    awful.key({ altkey, "Control" }, "h",
+        function ()
+            os.execute("spotifyc -p")
+            -- beautiful.mpd.update()
+        end,
+        {description = "spotify prev", group = "widgets"}),
+    awful.key({ altkey, "Control"}, "l",
+        function ()
+            os.execute("spotifyc -n")
+            -- beautiful.mpd.update()
+        end,
+        {description = "spotify next", group = "widgets"}),
     awful.key({ altkey, "Control" }, "Up",
         function ()
-            os.execute("mpc toggle")
-            beautiful.mpd.update()
+            os.execute("spotifyc -v +5")
+            -- beautiful.mpd.update()
         end,
-        {description = "mpc toggle", group = "widgets"}),
+        {description = "spotify +5%", group = "widgets"}),
     awful.key({ altkey, "Control" }, "Down",
         function ()
-            os.execute("mpc stop")
-            beautiful.mpd.update()
+            os.execute("spotifyc -v -5")
+            -- beautiful.mpd.update()
         end,
-        {description = "mpc stop", group = "widgets"}),
-    awful.key({ altkey, "Control" }, "Left",
+        {description = "spotify -5%", group = "widgets"}),
+    awful.key({ altkey, "Control" }, "m",
         function ()
-            os.execute("mpc prev")
-            beautiful.mpd.update()
+            os.execute("spotifyc -v t")
+            -- beautiful.mpd.update()
         end,
-        {description = "mpc prev", group = "widgets"}),
-    awful.key({ altkey, "Control" }, "Right",
-        function ()
-            os.execute("mpc next")
-            beautiful.mpd.update()
-        end,
-        {description = "mpc next", group = "widgets"}),
+        {description = "spotify toggle mute", group = "widgets"}),
+
     awful.key({ altkey }, "0",
         function ()
             local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
@@ -453,6 +466,8 @@ globalkeys = mytable.join(
     awful.key({ modkey, }, "u", function () awful.util.spawn("flameshot gui") end),
 
     awful.key({ modkey, }, "p", function () awful.util.spawn("flameshot screen") end),
+
+    awful.key({ modkey, }, "-", function () awful.util.spawn("spotifyc -c") end),
 
     awful.key({ altkey, }, "p", function () awful.util.spawn("flameshot full") end),
 
@@ -642,8 +657,12 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = browser },
+      properties = { screen = 1, tag = "web" } },
+    { rule = { class = "discord" },
+      properties = { screen = 1, tag = "discord" } },
+    { rule = { class = "spotify" },
+      properties = { screen = 1, tag = "media" } },
 }
 
 -- }}}

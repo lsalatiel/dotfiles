@@ -31,7 +31,7 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(6)
+theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#585b70"
 theme.border_focus  = "#89b4fa"
@@ -339,7 +339,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
 
     local arch_icon = wibox.widget.imagebox(theme.arch_icon)
 
@@ -370,7 +370,7 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.flex.horizontal,
             -- max_widget_size = 1500,
             -- clock, -- Middle widget
-        s.mytasklist, -- Middle widget
+        -- s.mytasklist, -- Middle widget
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,

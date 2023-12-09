@@ -118,11 +118,14 @@ alias xp="xrandr --output HDMI-1 --primary"
 alias g="git"
 alias gs="git status"
 alias ga="git add"
-alias gc="git commit -m"
-alias gp="git push"
-alias gr="git rm"
+alias gcm="git commit -m"
+alias gps="git push"
+alias gpl="git pull"
+alias grm="git rm"
+alias gsync="git fetch && git pull"
 
-export PATH=$PATH:/home/salatiel/.spicetify
+export PATH=$PATH:/home/salatiel/.config/spotifyc
+# export PATH=$PATH:/home/salatiel/.spicetify
 export EDITOR='nvim'
 export VISUAL='nvim'
 # fix colorscheme in neovi when in tmux
