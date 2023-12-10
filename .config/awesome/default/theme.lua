@@ -150,6 +150,17 @@ local vol = awful.widget.watch(
     end
 )
 
+local playerctl = awful.widget.watch(
+    "playerctl -p spotify metadata -f ': {{ artist }} - {{ title }}'", 1,
+    function(widget, stdout)
+        widget:set_markup("" .. markup.font(theme.font, stdout))
+    end
+)
+
+local status_cmd = awful.widget.watch("playerctl -p spotify status", 1, function(widget, stdout)
+        widget:set_markup(" " .. markup.font(theme.font, stdout))
+end)
+
 -- MPD
 theme.mpd = lain.widget.mpd({
     settings = function()
@@ -373,6 +384,12 @@ function theme.at_screen_connect(s)
         -- s.mytasklist, -- Middle widget
         },
         { -- Right widgets
+            status_cmd,
+            playerctl,
+            spr,
+            spr,
+            spr,
+            spr,
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             spr,

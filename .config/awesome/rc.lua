@@ -408,42 +408,23 @@ globalkeys = mytable.join(
     --     {description = "volume 0%", group = "hotkeys"}),
 
     -- MPD control
-    awful.key({ altkey, "Control" }, "p",
+    awful.key({ altkey, "Control" }, "space",
         function ()
-            os.execute("spotifyc -c")
-            -- beautiful.mpd.update()
+            os.execute("playerctl -p spotify play-pause")
         end,
         {description = "play-pause spotify", group = "widgets"}),
+
     awful.key({ altkey, "Control" }, "h",
         function ()
-            os.execute("spotifyc -p")
-            -- beautiful.mpd.update()
+            os.execute("playerctl -p spotify previous")
         end,
         {description = "spotify prev", group = "widgets"}),
+
     awful.key({ altkey, "Control"}, "l",
         function ()
-            os.execute("spotifyc -n")
-            -- beautiful.mpd.update()
+            os.execute("playerctl -p spotify next")
         end,
         {description = "spotify next", group = "widgets"}),
-    awful.key({ altkey, "Control" }, "Up",
-        function ()
-            os.execute("spotifyc -v +5")
-            -- beautiful.mpd.update()
-        end,
-        {description = "spotify +5%", group = "widgets"}),
-    awful.key({ altkey, "Control" }, "Down",
-        function ()
-            os.execute("spotifyc -v -5")
-            -- beautiful.mpd.update()
-        end,
-        {description = "spotify -5%", group = "widgets"}),
-    awful.key({ altkey, "Control" }, "m",
-        function ()
-            os.execute("spotifyc -v t")
-            -- beautiful.mpd.update()
-        end,
-        {description = "spotify toggle mute", group = "widgets"}),
 
     awful.key({ altkey }, "0",
         function ()
@@ -466,8 +447,6 @@ globalkeys = mytable.join(
     awful.key({ modkey, }, "u", function () awful.util.spawn("flameshot gui") end),
 
     awful.key({ modkey, }, "p", function () awful.util.spawn("flameshot screen") end),
-
-    awful.key({ modkey, }, "-", function () awful.util.spawn("spotifyc -c") end),
 
     awful.key({ altkey, }, "p", function () awful.util.spawn("flameshot full") end),
 
@@ -661,7 +640,7 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "web" } },
     { rule = { class = "discord" },
       properties = { screen = 1, tag = "discord" } },
-    { rule = { class = "spotify" },
+    { rule = { class = "spotify-launcher" },
       properties = { screen = 1, tag = "media" } },
 }
 
