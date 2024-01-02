@@ -16,22 +16,21 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/default/"
-theme.wallpaper                                 = "~/.config/awesome/default/wallpapers/21-9.png"
+theme.wallpaper                                 = "~/.config/awesome/default/wallpapers/waves-21-9.jpg"
 theme.font                                      = "Jet Brains Mono 11"
 
 
-theme.bg_normal     = "#11111b"
+theme.bg_normal     = "#ff000000"
 theme.bg_focus      = "#1e1e2e"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#45475a"
-theme.bg_systray    = theme.bg_normal
-
+theme.bg_systray    = "#1e1e2e"
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#585b70"
 theme.border_focus  = "#89b4fa"
@@ -350,9 +349,11 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
 
     local arch_icon = wibox.widget.imagebox(theme.arch_icon)
+
+    local tab = wibox.widget.textbox('/')
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -431,7 +432,7 @@ function theme.at_screen_connect(s)
             -- wibox.container.background(neticon, theme.bg_focus),
             -- wibox.container.background(net.widget, theme.bg_focus),
             spr,
-            spr,
+            tab,
             spr,
             clock,
             spr,
