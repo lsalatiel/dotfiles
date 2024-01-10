@@ -101,6 +101,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# couldn't make it work
+
+# # Define a Zsh widget that calls your script
+# function tmux_fzf_widget() {
+#     zsh -i ~/.scripts/tmux_fzf.sh 
+# }
+#
+# # Bind the widget to Ctrl+f
+# zle -N tmux_fzf_widget
+# bindkey '^f' tmux_fzf_widget
+#
+# bindkey -s ^k "tmux\n"
+
+alias f="$HOME/.scripts/tmux_fzf.sh"
+bindkey -s ^f "f\n"
+
 alias p="sudo pacman"
 alias ..="cd .."
 alias ls="exa --icons"
