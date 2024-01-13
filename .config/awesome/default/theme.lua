@@ -16,15 +16,17 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/default/"
-theme.wallpaper                                 = "~/.config/awesome/default/wallpapers/waves-21-9.jpg"
+-- theme.wallpaper                                 = "~/.config/awesome/default/wallpapers/waves-21-9.jpg"
 theme.font                                      = "Jet Brains Mono 11"
 
 
 theme.bg_normal     = "#ff000000"
-theme.bg_focus      = "#1e1e2e"
+-- theme.bg_focus      = "#1e1e2e"
+theme.bg_focus      = "#131313"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#45475a"
-theme.bg_systray    = "#1e1e2e"
+-- theme.bg_systray    = "#1e1e2e"
+theme.bg_systray    = "#131313"
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"

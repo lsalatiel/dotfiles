@@ -233,6 +233,7 @@ screen.connect_signal("arrange", function (s)
     local only_one = #s.tiled_clients == 1
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized or c.fullscreen then
+        -- if c.maximized or c.fullscreen then
             c.border_width = 0
         else
             c.border_width = beautiful.border_width
@@ -737,4 +738,6 @@ tag.connect_signal("property::selected", backham)
 awful.spawn.with_shell("picom -b --config $HOME/.config/picom/picom.conf")
 
 awful.spawn.with_shell("flameshot")
+
+awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/wallpapers/krampus.jpeg")
 -- }}}
