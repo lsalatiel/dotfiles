@@ -739,5 +739,5 @@ awful.spawn.with_shell("picom -b --config $HOME/.config/picom/picom.conf")
 
 awful.spawn.with_shell("flameshot")
 
-awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/wallpapers/krampus.jpeg")
+-- awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/wallpapers/krampus.jpeg")
 -- }}}
