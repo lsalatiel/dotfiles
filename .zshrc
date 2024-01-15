@@ -118,8 +118,8 @@ source $ZSH/oh-my-zsh.sh
 alias f="$HOME/.scripts/tmux_fzf.sh"
 bindkey -s ^f "f\n"
 
-alias k="$HOME/.scripts/tmux_fzf_currdir.sh"
-bindkey -s ^k "k\n"
+alias a="$HOME/.scripts/tmux_fzf_currdir.sh"
+bindkey -s ^a "a\n"
 
 alias p="sudo pacman"
 alias ..="cd .."
