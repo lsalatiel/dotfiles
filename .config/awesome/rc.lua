@@ -96,18 +96,18 @@ local terminal     = "alacritty"
 -- local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "firefox"
+local browser      = "zen-browser"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "web", "dev", "discord", "media", "5", "6", "7", "8", "9" }
+awful.util.tagnames = { "web", "code", "discord", "media", "5", "6", "7", "8", "9" }
 awful.layout.layouts = {
-    -- awful.layout.suit.floating,
     awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.fair,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
     --awful.layout.suit.max,
@@ -427,6 +427,18 @@ globalkeys = mytable.join(
         end,
         {description = "spotify next", group = "widgets"}),
 
+    awful.key({ altkey, "Control"}, "j",
+        function ()
+            os.execute("playerctl -p spotify volume 0.26")
+        end,
+        {description = "spotify volume down", group = "widgets"}),
+
+    awful.key({ altkey, "Control"}, "k",
+        function ()
+            os.execute("playerctl -p spotify volume 0.4")
+        end,
+        {description = "spotify volume up", group = "widgets"}),
+
     awful.key({ altkey }, "0",
         function ()
             local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
@@ -453,16 +465,18 @@ globalkeys = mytable.join(
 
     awful.key({ modkey }, "v", function() xrandr.xrandr() end),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"})
+    awful.key({ modkey }, "x", function() awful.util.spawn("betterlockscreen -l") end)
+
+    -- awful.key({ modkey }, "x",
+    --           function ()
+    --               awful.prompt.run {
+    --                 prompt       = "Run Lua code: ",
+    --                 textbox      = awful.screen.focused().mypromptbox.widget,
+    --                 exe_callback = awful.util.eval,
+    --                 history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --               }
+    --           end,
+    --           {description = "lua execute prompt", group = "awesome"})
     --]]
 )
 
@@ -641,8 +655,8 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "web" } },
     { rule = { class = "discord" },
       properties = { screen = 1, tag = "discord" } },
-    { rule = { class = "spotify-launcher" },
-      properties = { screen = 1, tag = "media" } },
+    -- { rule = { class = "spotify-launcher" },
+    --   properties = { screen = 1, tag = "media" } },
 }
 
 -- }}}
@@ -734,6 +748,20 @@ client.connect_signal("property::minimized", backham)
 client.connect_signal("unmanage", backham)
 -- ensure there is always a selected client during tag switching or logins
 tag.connect_signal("property::selected", backham)
+
+tag.connect_signal("property::selected", function(t)
+    local clients = awful.client.visible(s)
+    for _, client in pairs(clients) do
+        if awful.rules.match(client, {class = "Unity"}) then
+            client.fullscreen = true
+
+            gears.timer.start_new(0.1, function()
+                client.fullscreen = false
+                return false
+            end)
+        end
+    end
+end)
 
 awful.spawn.with_shell("picom -b --config $HOME/.config/picom/picom.conf")
 

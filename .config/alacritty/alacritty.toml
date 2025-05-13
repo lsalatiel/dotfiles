@@ -1,6 +1,7 @@
 [colors]
 [colors.primary]
-background = "#000000"
+# background = "#000000"
+background = "#040404"
 foreground = "#e3e8ea"
 
 [colors.normal]
@@ -24,11 +25,11 @@ cyan=    "#5FAFAF"
 white=   "#FFFFFF"
 
 [window]
-padding = { x = 10, y = 8 }
-opacity = 0.80
+# padding = { x = 10, y = 8 }
+# opacity = 0.80
 
-# padding = { x = 35, y = 35 }
-# opacity = 1.00
+padding = { x = 35, y = 35 }
+opacity = 1
 
 [scrolling]
 history = 50000
@@ -40,5 +41,5 @@ bold = { family = "SauceCodePro Nerd Font", style = "Bold" }
 italic = { family = "SauceCodePro Nerd Font", style = "Italic" }
 bold_italic = { family = "SauceCodePro Nerd Font", style = "Bold Italic" }
 
-size = 14.0
+size = 18.0
 

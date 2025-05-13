@@ -14,13 +14,14 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
-local theme                                     = {}
-theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/default/"
-theme.wallpaper                                 = "~/Pictures/wallpapers/krampus.jpeg"
-theme.font                                      = "Jet Brains Mono 11"
+local theme     = {}
+theme.dir       = os.getenv("HOME") .. "/.config/awesome/default/"
+theme.wallpaper = "/home/salatiel/Pictures/wallpapers/uzu.png"
+theme.font      = "Jet Brains Mono 11"
 
 
-theme.bg_normal     = "#ff000000"
+-- theme.bg_normal     = "#ff000000"
+theme.bg_normal     = "#000000"
 -- theme.bg_focus      = "#1e1e2e"
 theme.bg_focus      = "#131313"
 theme.bg_urgent     = "#ff0000"
@@ -32,10 +33,12 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(2)
+theme.useless_gap   = dpi(7)
 theme.border_width  = dpi(1)
-theme.border_normal = "#585b70"
-theme.border_focus  = "#89b4fa"
+theme.border_normal = "#0d0d0d"
+theme.border_focus  = "#7f849c"
+-- theme.border_normal = "#585b70"
+-- theme.border_focus  = "#89b4fa"
 -- theme.border_focus  = "#f5c2e7"
 theme.border_marked = "#91231c"
 
@@ -216,21 +219,21 @@ theme.mpd = lain.widget.mpd({
 -- })
 
 -- MEM
--- local memicon = wibox.widget.imagebox(theme.widget_mem)
--- local mem = lain.widget.mem({
---     settings = function()
---         widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
---     end
--- })
---
--- -- CPU
--- local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
--- local cpu = lain.widget.cpu({
---     settings = function()
---         widget:set_markup(markup.font(theme.font, " " .. cpu_now.usage .. "% "))
---     end
--- })
---
+local memicon = wibox.widget.imagebox(theme.widget_mem)
+local mem = lain.widget.mem({
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
+    end
+})
+
+-- CPU
+local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
+local cpu = lain.widget.cpu({
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. cpu_now.usage .. "% "))
+    end
+})
+
 -- -- Coretemp
 -- local tempicon = wibox.widget.imagebox(theme.widget_temp)
 -- local temp = lain.widget.temp({
@@ -403,21 +406,21 @@ function theme.at_screen_connect(s)
             -- wibox.container.background(mpdicon, theme.bg_focus),
             -- wibox.container.background(theme.mpd.widget, theme.bg_focus),
             spr,
-            volicon,
             -- theme.volume.widget,
             -- spr,
             -- volume_str,
-            vol,
             -- neticon,
             -- net.widget,
             -- wibox.container.background(mailicon, theme.bg_focus),
             --wibox.container.background(theme.mail.widget, theme.bg_focus),
             -- arrl_dl,
-            -- memicon,
-            -- mem.widget,
+            memicon,
+            mem.widget,
             -- arrl_ld,
             -- wibox.container.background(cpuicon, theme.bg_focus),
             -- wibox.container.background(cpu.widget, theme.bg_focus),
+            cpuicon,
+            cpu.widget,
             -- arrl_dl,
             -- tempicon,
             -- temp.widget,
@@ -426,6 +429,8 @@ function theme.at_screen_connect(s)
             --wibox.container.background(theme.fs.widget, theme.bg_focus),
             -- spr,
             -- spr,
+            volicon,
+            vol,
             spr,
             -- battery_str,
             baticon,
