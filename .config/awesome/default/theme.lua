@@ -16,7 +16,7 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme     = {}
 theme.dir       = os.getenv("HOME") .. "/.config/awesome/default/"
-theme.wallpaper = "/home/salatiel/Pictures/wallpapers/uzu.png"
+theme.wallpaper = "/home/salatiel/Pictures/wallpapers/abstract-dark-blue.jpg"
 theme.font      = "Jet Brains Mono 11"
 
 
@@ -36,10 +36,10 @@ theme.fg_minimize   = "#ffffff"
 theme.useless_gap   = dpi(7)
 theme.border_width  = dpi(1)
 theme.border_normal = "#0d0d0d"
-theme.border_focus  = "#7f849c"
+-- theme.border_focus  = "#7f849c"
 -- theme.border_normal = "#585b70"
 -- theme.border_focus  = "#89b4fa"
--- theme.border_focus  = "#f5c2e7"
+theme.border_focus  = "#f5c2e7"
 theme.border_marked = "#91231c"
 
 theme.tasklist_bg_focus                         = "#1A1A1A"
@@ -354,7 +354,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
 
     local arch_icon = wibox.widget.imagebox(theme.arch_icon)
 

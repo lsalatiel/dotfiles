@@ -331,9 +331,9 @@ globalkeys = mytable.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,           }, "t", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ modkey, "Shift"   }, "t", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
@@ -352,15 +352,15 @@ globalkeys = mytable.join(
 
 
     -- -- Show/hide wibox
-    -- awful.key({ modkey }, "b", function ()
-    --         for s in screen do
-    --             s.mywibox.visible = not s.mywibox.visible
-    --             if s.mybottomwibox then
-    --                 s.mybottomwibox.visible = not s.mybottomwibox.visible
-    --             end
-    --         end
-    --     end,
-    --     {description = "toggle wibox", group = "awesome"}),
+    awful.key({ modkey }, "space", function ()
+            for s in screen do
+                s.mywibox.visible = not s.mywibox.visible
+                if s.mybottomwibox then
+                    s.mybottomwibox.visible = not s.mybottomwibox.visible
+                end
+            end
+        end,
+        {description = "toggle wibox", group = "awesome"}),
 
     -- Widgets popups
     awful.key({ altkey, }, "c", function () if beautiful.cal then beautiful.cal.show(7) end end,
@@ -453,9 +453,13 @@ globalkeys = mytable.join(
         end,
         {description = "mpc on/off", group = "widgets"}),
 
+    awful.key({ modkey, }, "a", function () awful.spawn.with_shell("python ~/code/personal/projects/spotify-song-displayer/main.py") end),
+
     awful.key({ modkey, }, "r", function () awful.util.spawn("rofi -show drun") end),
 
     awful.key({ modkey, }, "d", function () awful.util.spawn("rofi -show window") end),
+
+    awful.key({ modkey, }, "c", function () awful.util.spawn("clipmenu") end),
 
     awful.key({ modkey, }, "u", function () awful.util.spawn("flameshot gui") end),
 
@@ -465,7 +469,11 @@ globalkeys = mytable.join(
 
     awful.key({ modkey }, "v", function() xrandr.xrandr() end),
 
-    awful.key({ modkey }, "x", function() awful.util.spawn("betterlockscreen -l") end)
+    awful.key({ modkey }, "x", function() awful.util.spawn("betterlockscreen -l") end),
+
+    awful.key({ modkey }, "F5", function() awful.util.spawn("brightnessctl s 10%-") end),
+
+    awful.key({ modkey }, "F6", function() awful.util.spawn("brightnessctl s 10%+") end)
 
     -- awful.key({ modkey }, "x",
     --           function ()
@@ -497,8 +505,8 @@ clientkeys = mytable.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
+    -- awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+    --           {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -657,6 +665,12 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "discord" } },
     -- { rule = { class = "spotify-launcher" },
     --   properties = { screen = 1, tag = "media" } },
+    -- {
+    --     rule = { name = "Spotify Song Displayer" },
+    --     properties = {
+    --         fullscreen = true
+    --     }
+    -- },
 }
 
 -- }}}
@@ -767,5 +781,6 @@ awful.spawn.with_shell("picom -b --config $HOME/.config/picom/picom.conf")
 
 awful.spawn.with_shell("flameshot")
 
+awful.spawn.with_shell("clipmenud")
 -- awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/wallpapers/krampus.jpeg")
 -- }}}

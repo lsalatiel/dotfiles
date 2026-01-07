@@ -8,11 +8,13 @@ selected_directory=$(find "$start_directory" -type d -not -path '*/\.*' -not -pa
 
 # Check if a directory was selected
 if [ -n "$selected_directory" ]; then
+    session_name=$(basename "$selected_directory")
     # Change to the selected directory
     if { [ "$TERM_PROGRAM" = "tmux" ] && [ -n "$TMUX" ]; } then
-        tmux new-window -c "$selected_directory"
+        tmux new-session -d -s "$session_name" -c "$selected_directory"
+        tmux switch-client -t "$session_name"
     else
-        tmux new -c "$selected_directory"
+        tmux new-session -s "$session_name" -c "$selected_directory"
     fi
 else
     echo "No directory selected."

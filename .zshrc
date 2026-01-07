@@ -37,6 +37,7 @@ alias rc="vim ~/.config/awesome/rc.lua"
 alias theme="vim ~/.config/awesome/default/theme.lua"
 alias clock="tty-clock -c -C 7 -b"
 alias xp="xrandr --output HDMI-1 --primary"
+alias song-displayer="python ~/code/personal/personal_projects/spotify-song-displayer/main.py"
 
 # git aliases
 alias g="git"
@@ -47,8 +48,6 @@ alias gps="git push"
 alias gpl="git pull"
 alias grm="git rm"
 alias gsync="git fetch && git pull"
-
-alias bright="xrandr --output eDP-1 --brightness"
 
 # npm aliases
 alias ni="npm install"
@@ -64,3 +63,11 @@ export TERM='xterm-256color'
 
 # default browser
 export BROWSER='firefox'
+
+alias photoshop="/home/salatiel/.photoshop/drive_c/Program\ Files/Adobe\ Photoshop\ 2021/photoshop.exe"
+
+export CLASSPATH=".:$HOME/code/ufes/labs/tools/antlr-4.13.2-complete.jar:$CLASSPATH"
+alias antlr4='java -jar /home/salatiel/code/ufes/labs/tools/antlr-4.13.2-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
+export BOT_TOKEN="7420733797:AAFXivNHGI7IegCE_bbMwHmEqTXNJQaIzDM"

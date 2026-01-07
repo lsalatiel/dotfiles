@@ -28,8 +28,8 @@ white=   "#FFFFFF"
 # padding = { x = 10, y = 8 }
 # opacity = 0.80
 
-padding = { x = 35, y = 35 }
-opacity = 1
+padding = { x = 25, y = 25 }
+opacity = 0.85
 
 [scrolling]
 history = 50000
